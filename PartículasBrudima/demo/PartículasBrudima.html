@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"> 
+  <title>Brudima</title>
+  <meta name="description" content="particles.js is a lightweight JavaScript library for creating particles.">
+  <meta name="author" content="Vincent Garreau" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" media="screen" href="css/style.css">
+</head>
+
+
+
+  <style>
+  
+    html,body{padding: 0; margin: 0;}
+    body{
+	 background-image: url("brudima/imagenes/ropa/fondo4.png");
+      display: flex;
+      align-items: center;
+    }
+a{
+  border-radius: 40px;
+  padding: 10px 40px;
+  margin: 92px;
+  text-decoration: none;
+}
+a:hover{
+  background: rgba(255, 255, 255, 0.543);
+}
+#btn_left{color: white;border: 3px solid white;}
+#btn_right{color: red;border: 3px solid red;}
+
+}
+  </style>
+<body>
+  <a href="brudima/index.html" id="btn_right" target="_blank" width="50" height="40">BRUDIMA</a>
+</body>
+
+
+
+<!-- count particles -->
+<div class="count-particles">
+  <span class="js-count-particles"></span>
+</div>
+
+<!-- particles.js container -->
+<div id="particles-js"></div>
+
+<!-- scripts -->
+<script src="../particles.js"></script>
+<script src="js/app.js"></script>
+
+<!-- stats.js -->
+<script src="js/lib/stats.js"></script>
+<script>
+  var count_particles, stats, update;
+  stats = new Stats;
+  stats.setMode(0);
+  stats.domElement.style.position = 'absolute';
+  stats.domElement.style.left = '0px';
+  stats.domElement.style.top = '0px';
+  document.body.appendChild(stats.domElement);
+  count_particles = document.querySelector('.js-count-particles');
+  update = function() {
+    stats.begin();
+    stats.end();
+    if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) {
+      count_particles.innerText = window.pJSDom[0].pJS.particles.array.length;
+    }
+    requestAnimationFrame(update);
+  };
+  requestAnimationFrame(update);
+</script>
+
+</body>
+</html>
